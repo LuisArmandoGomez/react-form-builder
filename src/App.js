@@ -4,6 +4,7 @@ import IconButton from 'material-ui/IconButton';
 import Container from './Container';
 import logo from './logo.png';
 import './App.css';
+import './controls/controls.css';
 
 class App extends Component {
   render() {

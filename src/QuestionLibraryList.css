@@ -2,7 +2,6 @@
   background: #ddd;
   float: left;
   height: 600px;
-  overflow-y: auto;
   width: 300px;
 }
 
@@ -14,4 +13,34 @@
 
 .loader-container img {
   width: 40px;
+}
+
+.question-add-container {
+  margin: 10px 0;
+  width: 100%;
+}
+
+.question-container {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+
+.question-container:hover {
+  background: #FAFAFA;
+  cursor: pointer;
+}
+
+.question-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.question-container ul li {
+  padding: 0 0 10px 0;
+  text-align: left;
+}
+
+.edit-image {
+  width: 715px;
 }
