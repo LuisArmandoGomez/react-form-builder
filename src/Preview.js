@@ -1,8 +1,13 @@
 import React from 'react';
+import './Preview.css';
 
 export default class Preview extends React.Component {
 
   render () {
-    return <h1>Preview</h1>;
+    return (
+      <div className='preview'>
+
+      </div>
+    );
   }
 }

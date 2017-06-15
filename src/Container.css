@@ -1,7 +1,12 @@
 .container {
-  min-height: 700px;
+  height: 600px;
 }
 
 .container-header {
   padding: 20px;
+}
+
+.container-right-column {
+  float: right;
+  width: calc(100% - 300px);
 }

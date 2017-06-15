@@ -1,8 +1,13 @@
 import React from 'react';
+import './Edit.css';
 
 export default class Edit extends React.Component {
 
   render () {
-    return <h1>Edit!</h1>;
+    return (
+      <div className='edit-container'>
+
+      </div>
+    );
   }
 }

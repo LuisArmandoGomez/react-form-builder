@@ -1,0 +1,6 @@
+.edit-container {
+  background: #09c;
+  float: left;
+  height: 600px;
+  width: calc(100% - 600px);
+}

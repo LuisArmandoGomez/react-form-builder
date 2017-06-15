@@ -1,0 +1,17 @@
+.question-library-list {
+  background: #ddd;
+  float: left;
+  height: 600px;
+  overflow-y: auto;
+  width: 300px;
+}
+
+.loader-container {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.loader-container img {
+  width: 40px;
+}
