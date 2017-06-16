@@ -5,6 +5,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import AutoComplete from 'material-ui/AutoComplete';
 import Edit from './Edit';
 import CommentCardList from './CommentCardList';
+import Control from './controls/Control';
 import Preview from './Preview';
 import QuestionLibraryList from './QuestionLibraryList';
 import './Container.css';
@@ -105,13 +106,15 @@ class Container extends React.Component {
   }
 
   addQuestion = (index) => {
-    const cards = _cloneDeep(this.state.editCards);
+    if (this.state.editCards.findIndex(card => { return card.id === questionLibrary[index].id}) === -1) {
+      const cards = _cloneDeep(this.state.editCards);
 
-    cards.push(_cloneDeep(questionLibrary[index]));
+      cards.push(_cloneDeep(questionLibrary[index]));
 
-    this.setState({
-      editCards: cards
-    });
+      this.setState({
+        editCards: cards
+      });
+    }
   }
 
   moveCard = (dragIndex, hoverIndex) => {
@@ -143,7 +146,19 @@ class Container extends React.Component {
               <QuestionLibraryList addQuestion={this.addQuestion} questionLibrary={questionLibrary} />
               <div className='container-right-column'>
                 <Edit editCards={this.state.editCards} moveCard={this.moveCard} />
-                <Preview />
+                <Preview>
+                  {
+                    this.state.editCards.map((card, key) => {
+                      return (
+                        <div className='container' key={`preview_control_${key}`}>
+                          <Control
+                            label={card.text}
+                            type={card.type} />
+                        </div>
+                      );
+                    })
+                  }
+                </Preview>
               </div>
               <div style={{clear: 'both'}} />
             </div>

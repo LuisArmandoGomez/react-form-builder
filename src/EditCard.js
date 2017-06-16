@@ -17,8 +17,6 @@ const cardTarget = {
     const dragIndex = monitor.getItem().index;
     const hoverIndex = props.index;
 
-    console.log('STUFF', dragIndex, hoverIndex);
-
     if (dragIndex === undefined || dragIndex === hoverIndex) {
       return;
     }
@@ -76,6 +74,6 @@ class EditCard extends React.Component {
 export default DragSource('feshong', cardSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging(),
-}))(DropTarget(['feshong', 'question'], cardTarget, connect => ({
+}))(DropTarget('feshong', cardTarget, connect => ({
   connectDropTarget: connect.dropTarget(),
 }))(EditCard));

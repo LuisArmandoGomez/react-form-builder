@@ -101,6 +101,7 @@ class Question extends React.Component {
                 <div style={{height: '700px'}}><img className='edit-image' alt='edit question' src={editQuestion} /></div>
                 : <Control
                   label={this.props.text}
+                  preview
                   type={this.props.type} />
             }
           </div>
