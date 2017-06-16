@@ -28,7 +28,7 @@
 
 .question-container:hover {
   background: #FAFAFA;
-  cursor: pointer;
+  cursor: move;
 }
 
 .question-container ul {
@@ -43,4 +43,10 @@
 
 .edit-image {
   width: 715px;
+}
+
+.question-area {
+  border: 1px dotted #333;
+  border-radius: 3px;
+  min-height: 300px;
 }

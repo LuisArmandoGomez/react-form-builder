@@ -9,7 +9,7 @@ export default class PreviewCommentCard extends React.Component {
       <div className="commentcard-container">
         <div className="container">
           <div className="intro-text">
-            We are always looking for ways to improve Wendys.com. Please take a minute to tell us what you think and help make Wendy's website experience even better.
+            We are always looking for ways to improve Kohls.com. Please take a minute to tell us what you think and help make Kohls' website experience even better.
           </div>
         </div>
         <div className="container">

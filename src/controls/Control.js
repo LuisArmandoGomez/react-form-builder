@@ -9,8 +9,10 @@ export default class Control extends React.Component {
     if (this.props.type === 'text') {
       control = (
         <div className='control'>
-          <h3>Text Field Preview</h3>
-          <TextInput label={this.props.label} />
+          {
+            this.props.preview ? <h3>Text Field Preview</h3> : null
+          }
+          <TextInput isRequired={this.props.isRequired} label={this.props.label} />
         </div>
       );
     }

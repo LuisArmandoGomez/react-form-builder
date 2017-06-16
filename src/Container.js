@@ -1,9 +1,15 @@
+import _cloneDeep from 'lodash/cloneDeep';
 import React from 'react';
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import AutoComplete from 'material-ui/AutoComplete';
+import RaisedButton from 'material-ui/RaisedButton';
 import Edit from './Edit';
 import CommentCardList from './CommentCardList';
+import Control from './controls/Control';
 import Preview from './Preview';
 import QuestionLibraryList from './QuestionLibraryList';
+import {lightGreen600} from 'material-ui/styles/colors';
 import './Container.css';
 import _find from 'lodash/find';
 
@@ -50,15 +56,37 @@ const listData = [
     ]
   }
 
-]
+];
 
-export default class Container extends React.Component {
+const questionLibrary = [
+  {
+    id: 1,
+    isRequired: false,
+    type: 'text',
+    text: 'If you experienced a technical issue please enter your order number'
+  },
+  {
+    id: 2,
+    isRequired: false,
+    type: 'text',
+    text: 'Please enter the location or number of the store you visited'
+  },
+  {
+    id: 3,
+    isRequired: false,
+    type: 'text',
+    text: 'Please enter the store location'
+  }
+];
+
+class Container extends React.Component {
 
   constructor (props) {
     super(props);
 
     this.state = {
       domain: '',
+      editCards: [],
       mode: ''
     };
   }
@@ -80,6 +108,39 @@ export default class Container extends React.Component {
     }
   }
 
+  isRequiredChange = (val, index) => {
+    const cards = _cloneDeep(this.state.editCards);
+
+    cards[index].isRequired = val;
+    this.setState({
+      editCards: cards
+    });
+  }
+
+  addQuestion = (index) => {
+    if (this.state.editCards.findIndex(card => { return card.id === questionLibrary[index].id}) === -1) {
+      const cards = _cloneDeep(this.state.editCards);
+
+      cards.push(_cloneDeep(questionLibrary[index]));
+
+      this.setState({
+        editCards: cards
+      });
+    }
+  }
+
+  moveCard = (dragIndex, hoverIndex) => {
+    const cards = _cloneDeep(this.state.editCards);
+    const dragCard = cards[dragIndex];
+
+    cards.splice(dragIndex, 1);
+    cards.splice(hoverIndex, 0, dragCard);
+
+    this.setState({
+      editCards: cards
+    });
+  }
+
   render () {
     return (
       <div className='container-wrapper'>
@@ -94,11 +155,37 @@ export default class Container extends React.Component {
         </div>
         {
           this.state.mode === 'edit' ?
-            <div>
-              <QuestionLibraryList />
+            <div style={{marginBottom: '30px'}}>
+              <QuestionLibraryList addQuestion={this.addQuestion} questionLibrary={questionLibrary} />
               <div className='container-right-column'>
-                <Edit />
-                <Preview />
+                <Edit
+                  editCards={this.state.editCards}
+                  isRequiredChange={this.isRequiredChange}
+                  moveCard={this.moveCard} />
+                <Preview>
+                  {
+                    this.state.editCards.map((card, key) => {
+                      return (
+                        <div className='container' key={`preview_control_${key}`}>
+                          <Control
+                            isRequired={card.isRequired}
+                            label={card.text}
+                            type={card.type} />
+                        </div>
+                      );
+                    })
+                  }
+                </Preview>
+              </div>
+              <div style={{clear: 'both'}} />
+              <div className='edit-bottom-bar'>
+                <RaisedButton
+                  label='< Back'
+                  style={{float: 'left'}} />
+                <RaisedButton
+                  backgroundColor={lightGreen600}
+                  label='Save'
+                  style={{float: 'right'}} />
               </div>
               <div style={{clear: 'both'}} />
             </div>
@@ -119,3 +206,5 @@ export default class Container extends React.Component {
     );
   }
 }
+
+export default DragDropContext(HTML5Backend)(Container);
