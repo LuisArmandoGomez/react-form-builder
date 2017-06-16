@@ -1,0 +1,15 @@
+.comment-card-list {
+  background: #fafafa;
+  border-right: 1px solid #ddd;
+  float: left;
+  height: 600px;
+  overflow-y: auto;
+  width: calc(100% - 601px);
+  max-width: 400px;
+}
+
+.template-list{
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  min-height: 150px;
+}

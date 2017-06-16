@@ -4,3 +4,7 @@
   height: 600px;
   width: 600px;
 }
+
+.preview.left { 
+  float: left;
+}

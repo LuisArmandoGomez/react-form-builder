@@ -1,0 +1,16 @@
+.intro-text{
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 0;
+}
+
+.customerservice-text{
+  color:#D01E27
+}
+
+.overall anchor-text,
+.content anchor-text,
+.design anchor-text,
+.usability anchor-text {
+  display: none;
+}
