@@ -16,7 +16,9 @@ export default class Edit extends React.Component {
           this.props.editCards.map((card, key) => {
             return (
               <EditCard
+                isRequired={card.isRequired}
                 index={key}
+                isRequiredChange={this.props.isRequiredChange}
                 label={card.text}
                 moveCard={this.props.moveCard}
                 questionId={card.id}

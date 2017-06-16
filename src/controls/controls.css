@@ -1,6 +1,7 @@
 .text-input {
   box-sizing: border-box;
   display: block;
+  margin-bottom: 15px;
   padding: 2px;
   width: 100%;
 }
@@ -18,4 +19,8 @@
 .control h3 {
   border-bottom: 1px solid #ccc;
   margin-top: 0px;
+}
+
+.required {
+  color: #F13C43;
 }

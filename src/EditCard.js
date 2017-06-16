@@ -1,5 +1,6 @@
 import React from 'react';
 import _upperFirst from 'lodash/upperFirst';
+import Checkbox from 'material-ui/Checkbox';
 import {findDOMNode} from 'react-dom';
 import {DragSource, DropTarget} from 'react-dnd';
 
@@ -46,6 +47,10 @@ const cardTarget = {
 
 class EditCard extends React.Component {
 
+  isRequiredChange = (e, val) => {
+    this.props.isRequiredChange(val, this.props.index);
+  }
+
   render () {
     const {isDragging, connectDragSource, connectDropTarget} = this.props;
 
@@ -63,6 +68,16 @@ class EditCard extends React.Component {
           <li>
             <div>
               <span className='card-label'>Label: </span>{this.props.label}
+            </div>
+          </li>
+          <li>
+            <div className='card-checkbox'>
+              <Checkbox
+                checked={this.props.isRequired}
+                label='Is Required'
+                onCheck={this.isRequiredChange}
+                style={{width: '150px'}}
+                value={this.props.isRequired} />
             </div>
           </li>
         </ul>

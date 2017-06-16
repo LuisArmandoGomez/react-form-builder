@@ -30,3 +30,7 @@
 .card-label {
   font-weight: 700;
 }
+
+.card-checkbox {
+  margin-top: 5px;
+}

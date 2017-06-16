@@ -12,7 +12,7 @@ export default class Control extends React.Component {
           {
             this.props.preview ? <h3>Text Field Preview</h3> : null
           }
-          <TextInput label={this.props.label} />
+          <TextInput isRequired={this.props.isRequired} label={this.props.label} />
         </div>
       );
     }

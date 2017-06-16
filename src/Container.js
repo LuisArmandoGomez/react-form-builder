@@ -59,16 +59,19 @@ const listData = [
 const questionLibrary = [
   {
     id: 1,
+    isRequired: false,
     type: 'text',
     text: 'If you experienced a technical issue please enter your order number'
   },
   {
     id: 2,
+    isRequired: false,
     type: 'text',
     text: 'Please enter the location or number of the store you visited'
   },
   {
     id: 3,
+    isRequired: false,
     type: 'text',
     text: 'Please enter the store location'
   }
@@ -103,6 +106,15 @@ class Container extends React.Component {
         mode: 'edit'
       })
     }
+  }
+
+  isRequiredChange = (val, index) => {
+    const cards = _cloneDeep(this.state.editCards);
+
+    cards[index].isRequired = val;
+    this.setState({
+      editCards: cards
+    });
   }
 
   addQuestion = (index) => {
@@ -145,13 +157,17 @@ class Container extends React.Component {
             <div>
               <QuestionLibraryList addQuestion={this.addQuestion} questionLibrary={questionLibrary} />
               <div className='container-right-column'>
-                <Edit editCards={this.state.editCards} moveCard={this.moveCard} />
+                <Edit
+                  editCards={this.state.editCards}
+                  isRequiredChange={this.isRequiredChange}
+                  moveCard={this.moveCard} />
                 <Preview>
                   {
                     this.state.editCards.map((card, key) => {
                       return (
                         <div className='container' key={`preview_control_${key}`}>
                           <Control
+                            isRequired={card.isRequired}
                             label={card.text}
                             type={card.type} />
                         </div>
