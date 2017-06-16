@@ -1,0 +1,18 @@
+.text-input {
+  box-sizing: border-box;
+  display: block;
+  margin-top: 10px;
+  padding: 2px;
+  width: 100%;
+}
+
+.label {
+  color: #333;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.control h3 {
+  border-bottom: 1px solid #ccc;
+  margin-top: 0px;
+}
