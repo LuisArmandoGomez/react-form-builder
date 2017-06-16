@@ -3,11 +3,13 @@ import React from 'react';
 import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import AutoComplete from 'material-ui/AutoComplete';
+import RaisedButton from 'material-ui/RaisedButton';
 import Edit from './Edit';
 import CommentCardList from './CommentCardList';
 import Control from './controls/Control';
 import Preview from './Preview';
 import QuestionLibraryList from './QuestionLibraryList';
+import {lightGreen600} from 'material-ui/styles/colors';
 import './Container.css';
 import _find from 'lodash/find';
 
@@ -154,7 +156,7 @@ class Container extends React.Component {
         </div>
         {
           this.state.mode === 'edit' ?
-            <div>
+            <div style={{marginBottom: '30px'}}>
               <QuestionLibraryList addQuestion={this.addQuestion} questionLibrary={questionLibrary} />
               <div className='container-right-column'>
                 <Edit
@@ -175,6 +177,16 @@ class Container extends React.Component {
                     })
                   }
                 </Preview>
+              </div>
+              <div style={{clear: 'both'}} />
+              <div className='edit-bottom-bar'>
+                <RaisedButton
+                  label='< Back'
+                  style={{float: 'left'}} />
+                <RaisedButton
+                  backgroundColor={lightGreen600}
+                  label='Save'
+                  style={{float: 'right'}} />
               </div>
               <div style={{clear: 'both'}} />
             </div>
