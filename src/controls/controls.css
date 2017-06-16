@@ -19,6 +19,7 @@
 .control h3 {
   border-bottom: 1px solid #ccc;
   margin-top: 0px;
+  margin-bottom: 20px;
 }
 
 .required {

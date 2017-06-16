@@ -85,7 +85,7 @@ class Container extends React.Component {
     this.state = {
       domain: '',
       editCards: [],
-      mode: 'edit'
+      mode: ''
     };
   }
   
