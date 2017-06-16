@@ -90,6 +90,10 @@ class Container extends React.Component {
       mode: ''
     };
   }
+
+  handleBackButton = () => {
+    this.setState({mode: ''})
+  }
   
   handleOnDomainSelect = (val) => {
     let domainTemplateList = _find(listData, {'id': val });
@@ -151,7 +155,8 @@ class Container extends React.Component {
             onNewRequest={this.handleOnDomainSelect}
             style={{display: 'block'}}
             fullWidth={true}
-            floatingLabelText="Filter by Domain" />
+            floatingLabelText="Filter by Domain"
+            style={{color:'#111111'}} />
         </div>
         {
           this.state.mode === 'edit' ?
@@ -181,7 +186,8 @@ class Container extends React.Component {
               <div className='edit-bottom-bar'>
                 <RaisedButton
                   label='< Back'
-                  style={{float: 'left'}} />
+                  style={{float: 'left'}}
+                  onTouchTap={this.handleBackButton} />
                 <RaisedButton
                   backgroundColor={lightGreen600}
                   label='Save'
@@ -195,8 +201,6 @@ class Container extends React.Component {
                   <div>
                     <CommentCardList templates={this.state.domainTemplateList.cards} handleEditOpen={this.handleEditOpen.bind(this)} />
                     <Preview showHeader={true}>
-                      <p>hellow</p>
-                      <p>helloe</p>
                     </Preview>
                   </div> : null
               }
