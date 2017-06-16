@@ -64,7 +64,6 @@ export default class Container extends React.Component {
   }
   
   handleOnDomainSelect = (val) => {
-    console.log(val);
     let domainTemplateList = _find(listData, {'id': val });
     this.setState({
       domain: val, 
@@ -75,7 +74,6 @@ export default class Container extends React.Component {
 
   handleEditOpen = (val) => {
     if(val){
-      console.log('triggering', val)
       this.setState({
         mode: 'edit'
       })
@@ -90,8 +88,9 @@ export default class Container extends React.Component {
             dataSource={domains}
             id='domain-auto'
             onNewRequest={this.handleOnDomainSelect}
-            placeholder='Type to filter domains'
-            style={{display: 'block'}} />
+            style={{display: 'block'}}
+            fullWidth={true}
+            floatingLabelText="Filter by Domain" />
         </div>
         {
           this.state.mode === 'edit' ?
@@ -108,7 +107,7 @@ export default class Container extends React.Component {
                 this.state.domain ?
                   <div>
                     <CommentCardList templates={this.state.domainTemplateList.cards} handleEditOpen={this.handleEditOpen.bind(this)} />
-                    <Preview>
+                    <Preview showHeader={true}>
                       <p>hellow</p>
                       <p>helloe</p>
                     </Preview>

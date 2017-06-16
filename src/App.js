@@ -14,7 +14,7 @@ class App extends Component {
           iconElementLeft={<img alt='Opinion Lab' src={logo} />}
           iconElementRight={<IconButton iconClassName='material-icons md-24' tooltip='Account' tooltipPosition='bottom-left'>account_box</IconButton>}
           iconStyleLeft={{marginTop: '18px'}}
-          style={{backgroundColor: '#1A1A1A'}} />
+          style={{backgroundColor: '#0277BD'}}/>
         <Container />
       </div>
     );

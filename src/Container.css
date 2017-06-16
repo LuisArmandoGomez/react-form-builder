@@ -1,9 +1,18 @@
 .container-wrapper {
-  height: 600px;
+  background: #fff;
+  height: 100%;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  /*border: 1px solid #ddd;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;*/
 }
 
 .container-header {
   padding: 20px;
+  background: #f3f3f3;
+  border-bottom: 1px solid #ddd;
 }
 
 .container-right-column {

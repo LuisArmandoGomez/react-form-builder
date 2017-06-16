@@ -14,10 +14,9 @@ export default class CommentCardList extends React.Component {
     if(this.props.templates){
        templates = this.props.templates.map((template, index) => {
         return (
-          <div key={index} className="template-list">
-            <p>{template.name}</p>
-            <p>{template.ID}</p>
-            <p>{template.Description}</p>
+          <div key={index} className="comment-card-list-item">
+            <p className="template-name">{template.name}</p>
+            <p className="template-desc">{template.Description}</p>
             <IconButton
               onTouchTap={() => {
                 this.props.handleEditOpen(template.parent_id)
@@ -32,8 +31,11 @@ export default class CommentCardList extends React.Component {
       templates = null;
     }
     return(
-      <div className="comment-card-list">
-        {templates}
+      <div className="col-xs-12 col-md-6 comment-card-list">
+        <h2>Templates</h2>
+        <div className="templates-wrapper">
+          {templates}
+        </div>
       </div>
     );
   }
