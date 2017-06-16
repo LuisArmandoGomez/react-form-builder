@@ -1,4 +1,7 @@
+import _cloneDeep from 'lodash/cloneDeep';
 import React from 'react';
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import AutoComplete from 'material-ui/AutoComplete';
 import Edit from './Edit';
 import CommentCardList from './CommentCardList';
@@ -50,16 +53,35 @@ const listData = [
     ]
   }
 
-]
+];
 
-export default class Container extends React.Component {
+const questionLibrary = [
+  {
+    id: 1,
+    type: 'text',
+    text: 'If you experienced a technical issue please enter your order number'
+  },
+  {
+    id: 2,
+    type: 'text',
+    text: 'Please enter the location or number of the store you visited'
+  },
+  {
+    id: 3,
+    type: 'text',
+    text: 'Please enter the store location'
+  }
+];
+
+class Container extends React.Component {
 
   constructor (props) {
     super(props);
 
     this.state = {
       domain: '',
-      mode: ''
+      editCards: [],
+      mode: 'edit'
     };
   }
   
@@ -82,6 +104,28 @@ export default class Container extends React.Component {
     }
   }
 
+  addQuestion = (index) => {
+    const cards = _cloneDeep(this.state.editCards);
+
+    cards.push(_cloneDeep(questionLibrary[index]));
+
+    this.setState({
+      editCards: cards
+    });
+  }
+
+  moveCard = (dragIndex, hoverIndex) => {
+    const cards = _cloneDeep(this.state.editCards);
+    const dragCard = cards[dragIndex];
+
+    cards.splice(dragIndex, 1);
+    cards.splice(hoverIndex, 0, dragCard);
+
+    this.setState({
+      editCards: cards
+    });
+  }
+
   render () {
     return (
       <div className='container-wrapper'>
@@ -96,9 +140,9 @@ export default class Container extends React.Component {
         {
           this.state.mode === 'edit' ?
             <div>
-              <QuestionLibraryList />
+              <QuestionLibraryList addQuestion={this.addQuestion} questionLibrary={questionLibrary} />
               <div className='container-right-column'>
-                <Edit />
+                <Edit editCards={this.state.editCards} moveCard={this.moveCard} />
                 <Preview />
               </div>
               <div style={{clear: 'both'}} />
@@ -120,3 +164,5 @@ export default class Container extends React.Component {
     );
   }
 }
+
+export default DragDropContext(HTML5Backend)(Container);

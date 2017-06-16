@@ -5,24 +5,6 @@ import Question from './Question';
 import './QuestionLibraryList.css';
 import loader from './loader.gif';
 
-const questionLibrary = [
-  {
-    id: 1,
-    type: 'text',
-    text: 'If you experienced a technical issue please enter your order number'
-  },
-  {
-    id: 2,
-    type: 'text',
-    text: 'Please enter the location or number of the store you visited'
-  },
-  {
-    id: 3,
-    type: 'text',
-    text: 'Please enter the store location'
-  }
-];
-
 export default class QuestionLibraryList extends React.Component {
 
   constructor (props) {
@@ -55,9 +37,12 @@ export default class QuestionLibraryList extends React.Component {
                 </RaisedButton>
               </div>
               {
-                questionLibrary.map((question, key) => {
+                this.props.questionLibrary.map((question, key) => {
                   return (
                     <Question
+                      addQuestion={this.props.addQuestion}
+                      id={question.id}
+                      questionIndex={key}
                       options={question.options}
                       text={question.text}
                       type={question.type}

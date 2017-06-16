@@ -2,5 +2,31 @@
   background: #09c;
   float: left;
   height: 600px;
+  padding: 10px;
   width: calc(100% - 600px);
+}
+
+.edit-card {
+  background: #fff;
+  border: 1px dotted #333;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.edit-card:hover {
+  background: #FAFAFA;
+  cursor: move;
+}
+
+.card-details {
+  list-style-type: none;
+  padding: 0;
+}
+
+.card-details li {
+  text-align: left;
+}
+
+.card-label {
+  font-weight: 700;
 }
