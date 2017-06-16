@@ -145,6 +145,16 @@ class Container extends React.Component {
     });
   }
 
+  closeCard = (index) => {
+    const cards = _cloneDeep(this.state.editCards);
+
+    cards.splice(index, 1);
+
+    this.setState({
+      editCards: cards
+    });
+  }
+
   render () {
     return (
       <div className='container-wrapper'>
@@ -164,6 +174,7 @@ class Container extends React.Component {
               <QuestionLibraryList addQuestion={this.addQuestion} questionLibrary={questionLibrary} />
               <div className='container-right-column'>
                 <Edit
+                  closeCard={this.closeCard}
                   editCards={this.state.editCards}
                   isRequiredChange={this.isRequiredChange}
                   moveCard={this.moveCard} />

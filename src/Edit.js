@@ -16,6 +16,7 @@ export default class Edit extends React.Component {
           this.props.editCards.map((card, key) => {
             return (
               <EditCard
+                closeCard={this.props.closeCard}                
                 isRequired={card.isRequired}
                 index={key}
                 isRequiredChange={this.props.isRequiredChange}

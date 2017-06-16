@@ -12,6 +12,7 @@
   border: 1px dotted #333;
   padding: 10px;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .edit-card:hover {
@@ -38,4 +39,10 @@
 
 .edit-bottom-bar {
   padding: 20px;
+}
+
+.card-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }

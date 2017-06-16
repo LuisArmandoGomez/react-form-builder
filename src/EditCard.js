@@ -1,8 +1,11 @@
 import React from 'react';
 import _upperFirst from 'lodash/upperFirst';
 import Checkbox from 'material-ui/Checkbox';
+import IconButton from 'material-ui/IconButton';
+import ClearIcon from 'material-ui/svg-icons/content/clear';
 import {findDOMNode} from 'react-dom';
 import {DragSource, DropTarget} from 'react-dnd';
+import {grey700} from 'material-ui/styles/colors';
 
 const cardSource = {
   beginDrag (props) {
@@ -51,6 +54,10 @@ class EditCard extends React.Component {
     this.props.isRequiredChange(val, this.props.index);
   }
 
+  closeCard = () => {
+    this.props.closeCard(this.props.index);
+  }
+
   render () {
     const {isDragging, connectDragSource, connectDropTarget} = this.props;
 
@@ -81,6 +88,13 @@ class EditCard extends React.Component {
             </div>
           </li>
         </ul>
+        <div className='card-close'>
+          <IconButton
+            onTouchTap={this.closeCard}
+            style={{padding: '3px', height: '30px', width: '30px'}}>
+            <ClearIcon />
+          </IconButton>
+        </div>
       </div>
     ));
   }
