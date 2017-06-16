@@ -32,11 +32,11 @@ const listData = [
   {
     id: 'store.kohls.com',
     cards: [
-      {name: 'Default', ID: 70337, Description: 'Default Card(changed 6/15/2015 2:32:59 PM)'},
-      {name: 'Desktop Default from www.kohls.com ', ID: 70693, Description: 'Default Card(changed 7/27/2015 10:12:40 AM)'},
-      {name: 'Waypoint Desktop Store from www.kohls.com ', ID: 71865, Description: 'Default Card(changed 7/28/2015 10:30:30 AM)'},
+      {name: 'Default', ID: 70337, Description: 'Default Card(changed 6/15/2015 2:32:59 PM)', parent_id: 'store.kohls.com'},
+      {name: 'Desktop Default from www.kohls.com ', ID: 70693, Description: 'Default Card(changed 7/27/2015 10:12:40 AM)', parent_id: 'store.kohls.com'},
+      {name: 'Waypoint Desktop Store from www.kohls.com ', ID: 71865, Description: 'Default Card(changed 7/28/2015 10:30:30 AM)', parent_id: 'store.kohls.com'},
       {name: 'Waypoint Desktop Store- Q1 ', ID: 70337, Description: 'Default Card(changed 10/30/2015 9:42:12 AM)'},
-      {name: 'Waypoint Desktop Store- Q1 Mobile Responsive Template', ID: 70337, Description: 'Default Card(changed 7/28/2015 10:30:40 AM)'},
+      {name: 'Waypoint Desktop Store- Q1 Mobile Responsive Template', ID: 70337, Description: 'Default Card(changed 7/28/2015 10:30:40 AM)', parent_id: 'store.kohls.com'},
     ]
   },
   {
@@ -72,6 +72,15 @@ export default class Container extends React.Component {
     })
   }
 
+  handleEditOpen = (val) => {
+    if(val){
+      console.log('triggering', val)
+      this.setState({
+        mode: 'edit'
+      })
+    }
+  }
+
   render () {
     return (
       <div className='container-wrapper'>
@@ -97,7 +106,7 @@ export default class Container extends React.Component {
               {
                 this.state.domain ?
                   <div>
-                    <CommentCardList templates={this.state.domainTemplateList.cards} />
+                    <CommentCardList templates={this.state.domainTemplateList.cards} handleEditOpen={this.handleEditOpen.bind(this)} />
                     <Preview>
                       <p>hellow</p>
                       <p>helloe</p>

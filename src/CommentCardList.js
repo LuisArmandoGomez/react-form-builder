@@ -8,6 +8,7 @@ import ModeEdit from 'material-ui/svg-icons/editor/mode-edit';
 
 export default class CommentCardList extends React.Component {
 
+
   render () {
     let templates
     if(this.props.templates){
@@ -18,7 +19,9 @@ export default class CommentCardList extends React.Component {
             <p>{template.ID}</p>
             <p>{template.Description}</p>
             <IconButton
-              onTouchTap={this.handleEditOpen}
+              onTouchTap={() => {
+                this.props.handleEditOpen(template.parent_id)
+              }}
               style={{float: 'right'}}>
               <ModeEdit color={blue700} />
             </IconButton>
