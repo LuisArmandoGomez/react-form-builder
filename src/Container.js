@@ -68,6 +68,7 @@ export default class Container extends React.Component {
     let domainTemplateList = _find(listData, {'id': val });
     this.setState({
       domain: val, 
+      mode: '',
       domainTemplateList: domainTemplateList
     })
   }
